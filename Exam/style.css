@@ -1,0 +1,10 @@
+.well {
+    width: 520px;
+    background-color: rgb(246, 246, 246);
+    text-align: left;
+    margin-left: 100px;
+    padding: 10px;
+}
+input {
+    width: 500px;
+}

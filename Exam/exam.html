@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="data.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <div ng-app="App" ng-controller="ContactController">
+        <form name="userForm" novalidate class="well">
+            <label>Name</label>
+            <br/>
+            <input type="text" name="name" ng-model="newcontact.name" ng-minlength="2" ng-maxlength="20" required/>
+            <span class="error" ng-show="userForm.name.$error.required">Required</span>
+            <span class="error" ng-show="userForm.name.$error.minlength">Word must be more than 2</span>
+            <span class="error" ng-show="userForm.name.$error.maxlength">Word must be less than 20</span>
+            <br/>
+            <label>Email</label>
+            <br/>
+            <input type="email" name="email" ng-model="newcontact.email" required>
+            <span class="error" ng-show="userForm.email.$error.required">Email is required</span>
+            <span class="error" ng-show="userForm.email.$error.email">Invalid email address</span>
+            <br/>
+            <label>Password</label>
+            <br/>
+            <input type="password" name="password" ng-model="newcontact.password" required/>
+            <span class="error" ng-show="userForm.password.$error.required">Password is required</span>
+            <br />
+            <label>Repeat Password</label>
+            <input type="password" name="password" ng-model="newcontact.password" required/>
+            <span class="error" ng-show="userForm.password.$error.required"></span>
+            <span class="error" ng-show="userForm.password.$error.password"></span>
+            <br />
+            <input type="hidden" ng-model="newcontact.id">
+            <br />
+            <input type="button" value="Save" ng-click="saveContact()" class="btn btn-primary" ng-disabled="userForm.$invalid">
+        </form>
+        <br />
+        <br />
+        <h2>Login Form</h2>
+        <form action="/action_page.php" method="post">
+            <div class="container">
+               <label for="uname"><b>Username</b></label>
+               <input type="email" placeholder="Enter Username" name="email" required>
+               <span class="error" ng-show="userForm.email.$error.email">Invalid email address</span>   
+               <br />
+               <label for="psw"><b>Password</b></label>
+               <input type="password" placeholder="Enter Password" name="psw" required>
+               <button type="submit">Login</button>
+               <label>
+               <input type="checkbox" checked="checked" name="remember"> Remember me
+               </label>
+            </div>
+        </form>
+    </div>
+</html>
